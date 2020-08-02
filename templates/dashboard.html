@@ -1,0 +1,103 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{user.email}}</title>
+    <link rel="stylesheet" href="{% static '/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="{%static '/dashboard.css'%}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-git.js"></script>
+    <script src="{%static 'js/monitor.js'%}"></script>
+   
+    <style>
+        input[type=text]{
+            border:.5px solid rgb(44, 218, 131) !important;
+            padding:0px !important;
+            padding-left:20px !important;
+            width:90%;
+            max-width:400px;
+            margin-top:60px !important;
+        }
+        #search-btn{
+            margin:auto;
+        }
+        .p-monitor{
+            color:black !important;
+        }
+        .p-content{
+            padding:10px;
+            height:auto;
+            min-height:300px;
+        }
+        .p-name{
+            padding:8px;
+            width:80%;
+        }
+        .del i{
+            outline: none;
+            user-select: none;
+            color: rgb(224, 30, 30);
+        }
+        .del i:hover,.visit i:hover{
+            cursor: pointer;
+        }
+        .visit i{
+            color: rgb(76, 46, 209);;
+            user-select: none;
+        }
+        .site-name{
+            float:right;
+            padding:5px;
+            margin-top: -5px;;
+            font-weight: bold;
+            color:orange;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-wrapper">
+        <div class="container">
+            <a href="#" class="brand-logo">Price Tracker</a>
+            <ul id="nav-mobile" class="right">
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid" id="main">
+        <div class="row">
+            <img class="loader" style="display:none" src="https://cssauthor.com/wp-content/uploads/2018/06/Material-Loading-Animation.gif" alt="">
+            <div class="col s12" id="product">
+                <div id="product-search" class="center">
+                    <form action="/search" method="post">
+                        {%csrf_token%}
+                        <input type="text" id="search" placeholder="Paste Product URL" name="search"><br>
+                        <button class="btn submit center green white-text lighten-1" id="search-btn">Search</button>
+                    </form>
+                </div>
+ 
+         <!-- --------------------------------------------- -->
+        <div id="product-info" style="margin-top:20px">
+            {%block product%}{%endblock%}
+        </div>
+            </div>
+
+            <!-- -------------------------- -->
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div id="monitoring-items" class="col s12">
+
+            </div>
+           
+        </div>
+    </div>
+<div id="userid" data-id="{{userid}}"></div>
+</body>
+</html>

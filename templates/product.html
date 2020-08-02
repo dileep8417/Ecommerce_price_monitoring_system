@@ -1,0 +1,81 @@
+{%extends "dashboard.html"%}
+{%block product%}
+{%load static%}
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+{%for data,values in product_data.items%}
+                {%if values.image is not None%}
+                    <div class="center col s6">
+                            <img src="{{values.image}}" style="position:relative;"  alt="" class="product-image">
+                    </div>
+                
+             <div id="specs" class="col s6">
+                <h5 class="blue-text"><u>Product Information:</u></h5>
+                <p>{{values.specification}}</p>
+             </div>
+             {%endif%}
+             {%endfor%}
+             <br>
+             <div class="col s12">
+                <table class="table">
+                    <tr>
+                        <th><u>Details</u></th>
+                        <th>Amazon</th>
+                        <th>Flipkart</th>
+                        <th>Snapdeal</th>
+                    </tr>
+                    <tr>
+                        <th>Title:</th>
+                        <td>{{product_data.amazon.title}}</td>
+                        <td>{{product_data.flipkart.title}}</td>
+                        <td>{{product_data.snapdeal.title}}</td>
+                    </tr>
+                    <tr>
+                        <th>Price:</th>
+                        <td>{{product_data.amazon.price_data}}</td>
+                        <td>{{product_data.flipkart.price_data}}</td>
+                        <td>{{product_data.snapdeal.price_data}}</td>
+                    </tr>
+                    <tr>
+                        <th>Rating:</th>
+                        <td>{{product_data.amazon.rating}}</td>
+                        <td>{{product_data.flipkart.rating}}</td>
+                        <td>{{product_data.snapdeal.rating}}</td>
+                    </tr>
+                    <tr>
+                        <th>Buy:</th>
+                            <td class=""><button class="btn a-btn orange center white-text lighten-2"><a target="_blank" class="white-text" href="{{product_data.amazon.product_url}}">Buy from Amazon</a></button></td>
+                            <td class=""><button class="btn f-btn orange center white-text lighten-2"><a target="_blank" class="white-text" href="{{product_data.flipkart.product_url}}">Buy from Flipkart</a></button></td>
+                            <td class=""><button class="btn s-btn orange center white-text lighten-2"><a target="_blank" class="white-text" href="{{product_data.snapdeal.product_url}}">Buy from Snapdeal</a></button></td>
+                        
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td class=""><button data-id="{{userid}}" data-price="{{product_data.amazon.price}}" data-url="{{product_data.amazon.product_url}}" data-title="{{product_data.amazon.title}}" data-site="Amazon" class="btn monitor-btn a-btn orange center white-text lighten-2">Monitor</button></td>
+                        <td class="" data-url="{{product_data.flipkart.product_url}}"><button data-id="{{userid}}" data-price="{{product_data.flipkart.price}}" data-url="{{product_data.flipkart.product_url}}" data-title="{{product_data.flipkart.title}}" data-site="Flipkart" class="btn monitor-btn f-btn orange center white-text lighten-2">Monitor</button></td>
+                        <td class=""><button data-id="{{userid}}" data-price="{{product_data.snapdeal.price}}" data-url="{{product_data.snapdeal.product_url}}" data-title="{{product_data.snapdeal.title}}" data-site="Snapdeal" class="btn monitor-btn s-btn orange center white-text lighten-2">Monitor</button></td>
+
+                    </tr>
+                </table>
+             </div>
+            
+             <script>
+                
+                $(document).ready(()=>{
+                    let amazon = "{{product_data.amazon.price_data}}";
+                    let flipkart = "{{product_data.flipkart.price_data}}";
+                    let snapdeal = "{{product_data.snapdeal.price_data}}";
+                    if(amazon=="Unavailable"){
+                        $(".a-btn").css("display","none");
+                    }
+                    if(flipkart=="Unavailable"){
+                        $(".f-btn").css("display","none");
+                    }
+                    if(snapdeal=="Unavailable"){
+                        $(".s-btn").css("display","none");
+                    }
+                });
+
+            </script>
+{%endblock%}
+

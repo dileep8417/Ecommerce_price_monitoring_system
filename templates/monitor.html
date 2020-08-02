@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%load static%}
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Monitor Products</title>
+    <img class="loader" style="display:none" src="https://cssauthor.com/wp-content/uploads/2018/06/Material-Loading-Animation.gif" alt="">
+
+    <style>
+        body,html{
+            overflow-x: hidden;
+        }
+        .loader{
+            position:absolute;
+            width:280px;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            z-index:1;
+        }
+        .nav-wrapper{
+            background:#00b894;
+            margin-bottom: 20px;
+        }
+        #sendmail{
+            margin: auto;
+           position:relative;
+           left:50%;
+           transform: translateX(-50%);
+           margin-top: 15px;
+        }
+      
+    </style>
+</head>
+<body>
+    <nav class="nav-wrapper">
+        <div class="container">
+            <a href="#" class="brand-logo">Price Tracker</a>
+            <ul id="nav-mobile" class="right">
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+   
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col s6">
+                <img src="{%static 'hist.png'%}" style="width: 600px;" alt="">
+            </div>
+            <div class="col s6">
+                <img src="{%static 'pie.png'%}" style="width: 700px;" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-bottom: 400px;height:400px">
+        <div class="row">
+            <div id="monitor-frame col s8 offset-4">
+                <div id="head-title"><h4 class="text-orange text-lighten-1">Product Monitoring</h4></div>
+                <div id="info">
+                    <table class="table"><tr>
+                        <th>Users-&nbsp;&nbsp;{{uCount}}</th>
+                        <th>Total Monitoring Products-&nbsp;&nbsp;{{mCount}}</th>
+                        <th>No. of Price changes- &nbsp;&nbsp;<span id="pChg">0</span></th>
+                        <th>No. of Mails sent- &nbsp;&nbsp;<span id="mailCount">0</span></th>
+                    
+                    </tr></table>
+                    <h4>Click Monitor Button for sending Emails to user on price change of monitoring product.</h4>
+                    <button id="sendmail" class="btn orange text-white">Monitor</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+  
+    $("#sendmail").click(function(){
+        if(confirm("Do you want to monitor products?")){
+            $(".loader").css("display","block");
+            $.ajax({
+                url:"/send",
+                method:"GET",
+                success:function(resp){
+                    var data = resp;
+                   console.log(data)
+                   if(data=="chg"){
+                       alert("No price change detected");
+                   }else{
+                        alert("Price change detected");
+                   }
+                   alert("Mails were sent for changed products");
+                   $("#pChg").text(data[0].pc);
+                   $("#mailCount").text(data[0].mc);
+                   $(".loader").css("display","none");   
+                }
+            }).fail(()=>{
+                alert("Something went wrong.");
+            });
+        }
+    });
+</script>

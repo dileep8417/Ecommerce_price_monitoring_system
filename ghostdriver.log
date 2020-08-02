@@ -1,0 +1,28 @@
+[INFO  - 2020-02-02T02:55:12.016Z] GhostDriver - Main - running on port 55746
+[INFO  - 2020-02-02T02:55:16.062Z] Session [708e3f60-4567-11ea-8a45-7d5b4d00b231] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2020-02-02T02:55:16.062Z] Session [708e3f60-4567-11ea-8a45-7d5b4d00b231] - page.customHeaders:  - {}
+[INFO  - 2020-02-02T02:55:16.062Z] Session [708e3f60-4567-11ea-8a45-7d5b4d00b231] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-10-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2020-02-02T02:55:16.062Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 708e3f60-4567-11ea-8a45-7d5b4d00b231
+[ERROR - 2020-02-02T02:55:17.773Z] Session [708e3f60-4567-11ea-8a45-7d5b4d00b231] - page.onError - msg: TypeError: undefined is not an object (evaluating 'a.omniture.tpv')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-02-02T02:55:17.773Z] Session [708e3f60-4567-11ea-8a45-7d5b4d00b231] - page.onError - stack:
+  (anonymous function) (https://img1a.flixcart.com/www/linchpin/batman-returns/omni/omni16.js:96)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-02-02T02:55:18.716Z] Session [708e3f60-4567-11ea-8a45-7d5b4d00b231] - page.onError - msg: ReferenceError: Can't find variable: Set
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-02-02T02:55:18.716Z] Session [708e3f60-4567-11ea-8a45-7d5b4d00b231] - page.onError - stack:
+  (anonymous function) (https://img1a.flixcart.com/www/linchpin/fk-cp-zion/js/vendor.chunk.df73cecb.js:33)
+  c (https://img1a.flixcart.com/www/linchpin/fk-cp-zion/js/runtime.af470521.js:1)
+  (anonymous function) (https://img1a.flixcart.com/www/linchpin/fk-cp-zion/js/vendor.chunk.df73cecb.js:17)
+  c (https://img1a.flixcart.com/www/linchpin/fk-cp-zion/js/runtime.af470521.js:1)
+  (anonymous function) (https://img1a.flixcart.com/www/linchpin/fk-cp-zion/js/app.chunk.7d5a1a24.js:22)
+  c (https://img1a.flixcart.com/www/linchpin/fk-cp-zion/js/runtime.af470521.js:1)
+  (anonymous function) (https://img1a.flixcart.com/www/linchpin/fk-cp-zion/js/app.chunk.7d5a1a24.js:22)
+  c (https://img1a.flixcart.com/www/linchpin/fk-cp-zion/js/runtime.af470521.js:1)
+  a (https://img1a.flixcart.com/www/linchpin/fk-cp-zion/js/runtime.af470521.js:1)
+  t (https://img1a.flixcart.com/www/linchpin/fk-cp-zion/js/runtime.af470521.js:1)
+
+  phantomjs://platform/console++.js:263 in error

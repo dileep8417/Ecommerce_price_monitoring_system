@@ -1,0 +1,77 @@
+{%load static%}
+{% load socialaccount %}
+{%providers_media_js %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Price Tracker</title>
+    <link rel="stylesheet" href="{% static '/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+    <nav class="nav-wrapper ">
+        <div class="container">
+            <a href="#" class="brand-logo">Price Tracker</a>
+            <ul id="nav-mobile" class="right">
+                <li><a href="/login">Login</a></li>
+                <li>|</li>
+                <li><a href="/signup">Register</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col m7 s12">
+                <div id="about">
+                <div class="card blue-grey darken-1" style="padding:5px">
+                    <h4 class="orange-text text-lighten-2"><b>About</b></h4>
+                            <div class="card-content white-text text-lighten-2" style="margin-top:-25px">
+                                <i>Price Tracker is a recommender and alerting system which will helps you in saving time in the process of searching a product. It will monitor the prices of the product you added and alerts you when the price got decreased and also it compares the product price from multiple e-commerce website.</i>
+                            </div>
+                        </div>
+                </div>
+                <div id="ecommerce">
+                    <h5 class="pink-text text-lighten-2 center"><b>Supported E-commerce</b></h5>
+                    <div id="image-logos" class="container-fluid">
+                        <div class="row">
+                            <div class="col s4 m6 l4 center">
+                                <img src="https://vteamlabs.com/wp-content/uploads/2018/10/Amazon-logo.png" alt="" class="img">
+                            </div>
+                            <div class="col s4 m6 l4 center"> 
+                                <img src="https://logos-download.com/wp-content/uploads/2016/09/Flipkart_logo.png" alt="" class="flipkart img">
+                            </div>
+                            <div class="col s4 m12 l4 center"> 
+                                <img src="https://seeklogo.net/wp-content/uploads/2017/01/snapdeal-logo-preview.png" alt="" class=" snapdeal img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m5 right card" style="padding-bottom:15px;padding-top:0px">
+                <div id="form">
+                    <div class="card-content">
+                        <div class="error">{{err}}</div>
+                    <h4 class="text-lighten-3 center" style="color:#00b894"><b>{{formtype}}</b></h4>
+                    <div class="col s12">
+                        {% block login %}
+                        {%endblock%}
+                        {% block signup %}
+                        {%endblock%}
+                    </div>
+                    <div class="col s12 center">
+                        <div style="position:relative;">
+                            <button class="loginBtn loginBtn--google"><a class="white-text" href="{%provider_login_url "google"%}">Login with Google&nbsp;&nbsp;&nbsp;</a></button>
+                            <button class="loginBtn loginBtn--facebook"><a class="white-text" href="{%provider_login_url "facebook" method="oauth2"%}">Login with Facebook</a></button>
+                        </div>    
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

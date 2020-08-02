@@ -1,0 +1,22 @@
+{% extends "mainpage.html" %}
+{% block login %}
+<div id="signupform">
+    <form action="" method="post">
+        {%csrf_token%}
+        <table class="table">
+            <tr>
+                <th>Email ID:</th>
+                <td><input required name="email" type="email"></td>
+            </tr>
+            <tr>
+                <th>Password:</th>
+                <td><input required name="pass" type="password"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="center"><input type="submit" class="btn blue lighten-2 white-text" value="Login"></td>
+            </tr>
+        </table>
+        <p><center><b class="text-info">No account? <a href="/signup">Register</a></b></center></p>
+    </form>
+</div>
+{%endblock%}
